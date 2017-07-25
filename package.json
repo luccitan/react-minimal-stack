@@ -1,0 +1,50 @@
+{
+  "name": "react-minimal-stack",
+  "version": "0.1.0",
+  "description": "Personal minimal stack to quickly start a React project (with HMR)",
+  "main": "server.js",
+  "scripts": {
+    "dev": "node -r babel-register server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/luccitan/react-minimal-stack.git"
+  },
+  "bugs": {
+    "url": "https://github.com/luccitan/react-minimal-stack/issues"
+  },
+  "keywords": [
+    "react",
+    "hmr",
+    "stack",
+    "hot",
+    "webpack",
+    "babel"
+  ],
+  "author": "Tanguy LUCCI <tanguy.lucci@protonmail.com>",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.25.0",
+    "babel-loader": "^7.1.1",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-register": "^6.24.1",
+    "express": "^4.15.3",
+    "react-hot-loader": "^3.0.0-beta.7",
+    "webpack": "^3.3.0",
+    "webpack-dev-middleware": "^1.11.0",
+    "webpack-hot-middleware": "^2.18.2"
+  },
+  "dependencies": {
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  },
+  "babel": {
+    "presets": [
+      "es2015",
+      "stage-0",
+      "react"
+    ]
+  }
+}
