@@ -7,7 +7,7 @@ but the [React Hot Loader](https://github.com/gaearon/react-hot-loader)
 has been added for a faster and more comfortable developement.
 
 This stack has highly been influenced by
-[Gaearon's boilerplate](https://github.com/gaearpreon/react-hot-boilerplate/tree/next).
+[Calesce's example](https://github.com/calesce/react-hot-loader-examples).
 My stack may diverge in the future, that's why a personal repository has been made.
 
 #### Quick starting
@@ -15,7 +15,7 @@ My stack may diverge in the future, that's why a personal repository has been ma
 ```
 git clone https://github.com/luccitan/react-minimal-stack projectname
 
-cd projectname && npm install && npm start devtool
+cd projectname && npm install && npm start dev
 ```
 
 #### Architecture information
