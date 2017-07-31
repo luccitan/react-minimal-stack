@@ -1,21 +1,19 @@
 import { join } from 'path';
 import webpack from 'webpack';
 import express from 'express';
-import config from './webpack.config.babel';
+import config from './webpack.config.dev.babel';
 
 const app = express();
 const compiler = webpack(config);
 const port = process.env.PORT || 8080;
-const path = `https://localhost:${port}`
 
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
-  publicPath: config.output.publicPath
+  publicPath: config.output.publicPath,
 }));
-
 app.use(require('webpack-hot-middleware')(compiler));
 
-app.get('*', function(req, res) {
+app.get('/', function(req, res) {
   res.sendFile(join(__dirname, 'index.html'));
 });
 

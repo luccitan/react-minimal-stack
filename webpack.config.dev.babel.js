@@ -1,19 +1,22 @@
-import { join } from 'path';
+import path from 'path';
 import webpack from 'webpack';
+import base from './webpack.config.base.babel'
 
 export default {
+
+  ...base,
+
+  output: {
+    ...base.output,
+    library: 'app',
+    libraryExport: 'default',
+  },
 
   entry: [
     'react-hot-loader/patch', // activate HMR for React
     'webpack-hot-middleware/client?quiet=true',
-    './src/index'
+    ...base.entry,
   ],
-
-  output: {
-    path: join(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/static/'
-  },
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
@@ -21,15 +24,8 @@ export default {
     new webpack.NamedModulesPlugin(),
     // prints more readable module names in the browser console on HMR updates
     new webpack.NoEmitOnErrorsPlugin(),
-    // do not emit compiled assets that include errors
+    // do not emit compiled assets that include errors,
+    ...base.plugins,
   ],
-
-  module: {
-    loaders: [{
-      test: /\.jsx?$/,
-      loaders: ['babel-loader'],
-      include: join(__dirname, 'src')
-    }]
-  }
 
 };

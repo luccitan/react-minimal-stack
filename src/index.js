@@ -1,16 +1,22 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import Application from './components/Application';
+import { root } from 'baobab-react/higher-order';
 
-const root = document.getElementById('root');
-const render = Component =>
+import Application from 'components/Application';
+import state from 'source/state';
+import actions from 'source/actions';
+
+const rootElement = document.getElementById('root');
+const render = Component => {
+  const RootedComponent = root(state, Component);
   ReactDOM.render(
     <AppContainer>
-      <Component />
+      <RootedComponent />
     </AppContainer>,
-    root
+    rootElement
   );
+}
 
 render(Application);
 if (module.hot) {
@@ -19,3 +25,8 @@ if (module.hot) {
     render(_Application);
   });
 }
+
+export default {
+  actions,
+  state,
+};
