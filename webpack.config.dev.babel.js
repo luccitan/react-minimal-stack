@@ -1,6 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
-import base from './webpack.config.base.babel'
+import base, { cssLoader } from './webpack.config.base.babel';
 
 export default {
 
@@ -15,8 +15,19 @@ export default {
   entry: [
     'react-hot-loader/patch', // activate HMR for React
     'webpack-hot-middleware/client?quiet=true',
+    './src/index.dev',
     ...base.entry,
   ],
+
+  module: {
+    rules: [
+      ...base.module.rules,
+      {
+        test: /\.css$/,
+        loaders: ['style-loader', cssLoader ]
+      },
+    ],
+  },
 
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
