@@ -9,11 +9,11 @@ export default {
     rules: [
       ...base.module.rules,
       {
-        test: /\.css$/,
+        test: /\.(le|c)ss$/,
         loader: ExtractTextPlugin.extract({
           fallback: 'style-loader',
-          use: cssLoader,
-        })
+          use: ['css-loader', 'less-loader'],
+        }),
       },
     ],
   },

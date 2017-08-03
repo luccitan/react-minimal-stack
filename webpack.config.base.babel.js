@@ -1,15 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
 
-export const cssLoader = {
-  loader: 'css-loader',
-  options: {
-    modules: true,
-    importLoaders: 1,
-    localIdentName: '[name]_[local]_[hash:base64:5]',
-  }
-};
-
 export default {
 
   entry: [],
@@ -33,11 +24,22 @@ export default {
   plugins: [],
 
   module: {
-    rules: [
-      {
+    rules: [{
         test: /\.jsx?$/,
-        loaders: ['babel-loader'],
+        use: 'babel-loader',
         include: path.join(__dirname, 'src')
+      }, {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
+        use: {
+          loader: 'file-loader',
+          options: { name: 'fonts/[hash].[ext]' },
+        }
+      }, {
+        test: /\.(png|jpe?g|gif|bmp)$/,
+        use: {
+          loader: 'file-loader',
+          options: { name: 'images/[hash].[ext]' },
+        }
       }
     ]
   }
