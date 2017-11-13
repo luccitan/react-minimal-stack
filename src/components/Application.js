@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import style from 'styles/Application.less';
+
 export default class Application extends Component {
 
   render() {

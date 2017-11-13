@@ -4,7 +4,9 @@
   "description": "Personal minimal stack to quickly start a React project (with HMR)",
   "main": "server.js",
   "scripts": {
-    "dev": "node -r babel-register server.js"
+    "dev": "node -r babel-register server.js",
+    "wp": "webpack --config webpack.config.prod.babel.js --progress",
+    "build": "npm run wp && cp index.html dist/index.html"
   },
   "repository": {
     "type": "git",
@@ -21,7 +23,7 @@
     "webpack",
     "babel"
   ],
-  "author": "Tanguy LUCCI <tanguy.lucci@protonmail.com>",
+  "author": "Tanguy LUCCI <tanguylucci@protonmail.com>",
   "license": "ISC",
   "devDependencies": {
     "babel-core": "^6.25.0",
@@ -32,6 +34,7 @@
     "babel-register": "^6.24.1",
     "css-loader": "^0.28.4",
     "express": "^4.15.3",
+    "extract-text-webpack-plugin": "^3.0.2",
     "file-loader": "^0.11.2",
     "less": "^2.7.2",
     "less-loader": "^4.0.5",

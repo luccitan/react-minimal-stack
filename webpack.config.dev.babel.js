@@ -1,6 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
-import base, {cssLoader} from './webpack.config.base.babel';
+import base, { CSSModule } from './webpack.config.base.babel';
 
 export default {
 
@@ -15,7 +15,8 @@ export default {
   entry : [
     'react-hot-loader/patch', // activate HMR for React
     'webpack-hot-middleware/client?quiet=true',
-    './src/index.dev',
+    'source/index.dev',
+    'styles/Base.less',
     ...base.entry
   ],
 
@@ -23,11 +24,8 @@ export default {
     rules: [
       ...base.module.rules, {
         test: /\.(le|c)ss$/,
-        use: [
-          { loader: 'style-loader' },
-          { loader: 'css-loader' },
-          { loader: 'less-loader' }
-        ],
+        exclude: [ path.resolve(__dirname, 'src/styles/Base.less'), ],
+        use: ['style-loader', `css-loader?${CSSModule}`, 'less-loader'],
       },
     ],
   },
